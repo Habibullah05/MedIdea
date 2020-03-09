@@ -1,0 +1,61 @@
+﻿<Window x:Class="PL.Views.Windows.AddClientCartWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+           xmlns:viewmodel="clr-namespace:PL.ViewModels"  
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="Add Client" WindowStyle="ToolWindow" ResizeMode="NoResize" Height="500" Width="300">
+    <Window.Resources>
+        <viewmodel:AddClientCartWindowViewModel x:Key="vm"></viewmodel:AddClientCartWindowViewModel>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="30*"/>
+            <RowDefinition  Height="10*"/>
+            <RowDefinition  Height="10*"/>
+            <RowDefinition  Height="10*"/>
+            <RowDefinition  Height="10*"/>
+            <RowDefinition  Height="10*"/>
+
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Label>First Name:</Label>
+            <TextBox  Name="FirstNameTextBox" Margin="5"/>
+            <Label>Middle Name:</Label>
+            <TextBox  Name="MiddleNameTextBox" Margin="5"/>
+            <Label>Last Name:</Label>
+            <TextBox  Name="LastNameTextBox" Margin="5"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <Label>Gender:</Label>
+            <ComboBox   Name="GenderBox" ItemsSource="{Binding Gender}" SelectedItem="" Margin="10"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <Label>Date of Birth:</Label>
+            <DatePicker  Name="BirthDatePicker"  Margin="10">
+                <DatePicker.Text>
+                    <Binding Path = "ClientCart.BirthDay" >
+                        <Binding.ValidationRules >
+                            <ExceptionValidationRule />
+                        </Binding.ValidationRules >
+                    </Binding >
+                </DatePicker.Text >
+
+            </DatePicker>
+        </StackPanel>
+        <StackPanel Grid.Row="3">
+            <Label>Address:</Label>
+            <TextBox  Name="AddressTextBox" Margin="10"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4">
+            <Label>Phone:</Label>
+            <TextBox Name="PhoneTextBox"  
+                     Text="{Binding MyProperty}" Margin="10"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="5" Background="SkyBlue">
+            <Button  MinHeight="25" MinWidth="125" IsCancel="True" MaxHeight="100" Padding="3"  Margin="10" Name="Cancel_Button" Content="Cancel" FontSize="20" Background="Transparent" />
+            <!--<Button  MinHeight="25" MinWidth="125" Click="AddClient_Button_Click" MaxHeight="100" Padding="3" Command="{Binding  AddClick}" Margin="10" Name="AddClient_Button" Content="Add" FontSize="20" Background="Transparent"/>-->
+        </StackPanel>
+
+    </Grid>
+</Window>

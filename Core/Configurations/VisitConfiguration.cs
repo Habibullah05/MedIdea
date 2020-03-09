@@ -15,7 +15,8 @@ namespace Core.Validation
                    .HasMaxLength(100);
             builder.Property(v => v.TypeVisit)
                    .IsRequired();
-          //  builder.Property(v => v.DateOfVisit).HasDefaultValue(DateTime.Now);
+            builder.HasOne(v=>v.TypeVisit).WithMany(t=>t.Visits);
+            //  builder.Property(v => v.DateOfVisit).HasDefaultValue(DateTime.Now);
         }
        
 

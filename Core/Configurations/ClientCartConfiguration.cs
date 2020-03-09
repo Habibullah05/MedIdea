@@ -25,6 +25,7 @@ namespace Core.Validation
             builder.Property(c => c.Address).HasMaxLength(50);
             builder.HasMany(c => c.Visits)
                    .WithOne(v => v.Client);
+            builder.HasOne(c => c.Gender).WithMany(g => g.ClientCarts);
         }
         
     }
