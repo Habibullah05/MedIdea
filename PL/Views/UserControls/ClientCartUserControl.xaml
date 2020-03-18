@@ -9,10 +9,8 @@
             <RowDefinition Height="10*"/>
             <RowDefinition Height="90*"/>
             <RowDefinition Height="10*"/>
-
-
         </Grid.RowDefinitions>
-        <TextBlock FontSize="30" >Clients:</TextBlock>
+        <TextBlock FontSize="30"  Text="{Binding Title}"></TextBlock>
         <TextBox Height="20" MinWidth="50" Text="{Binding SearchTextClient, UpdateSourceTrigger=PropertyChanged}" MaxWidth="500" Margin="5" DockPanel.Dock="Top"/>
         <ListView Grid.Row="1" ItemsSource="{Binding Clients}" SelectedItem="{Binding SelctedClient}">
             <ListView.View  >

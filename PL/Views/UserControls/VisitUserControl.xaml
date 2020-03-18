@@ -4,6 +4,33 @@
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
-            
+        <Grid Background="SkyBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="90*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <TextBlock FontSize="30" >Visits:</TextBlock>
+            <TextBox Height="20" MinWidth="50" Text="{Binding SearchTextClient, UpdateSourceTrigger=PropertyChanged}" MaxWidth="500" Margin="5" DockPanel.Dock="Top"/>
+            <ListView Grid.Row="1" ItemsSource="{Binding Visits}" SelectedItem="{Binding SelctedVisit}">
+                <ListView.View  >
+                    <GridView >
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=FullName}" Width="300">Full Name</GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=DateOfVisit}" Width="100">Date Of Visit</GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=TypeVisit}" Width="150">Type Visit</GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Diagnosis}" Width="250">Diagnosis</GridViewColumn>
+                        
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <UniformGrid Grid.Row="2"  Columns="4" Background="SkyBlue">
+
+                <Button  MinHeight="25" MinWidth="100" MaxHeight="100" MaxWidth="200" Padding="5" Command="{Binding Books_Click}" Margin="10" Name="Visit_Button" Content="Visits" FontSize="15" Background="Transparent" />
+                <Button  MinHeight="25" MinWidth="100" MaxHeight="100" MaxWidth="200" Padding="5" Command="{Binding AddClick}" Margin="10" Name="AddClient_Button" Content="Add" FontSize="15" Background="Transparent"/>
+                <Button  MinHeight="25" MinWidth="150" MaxHeight="100" MaxWidth="200" Padding="5" Command="{Binding EditClick}" Margin="10" Name="EditClient_Button" Content="Edit" FontSize="15" Background="Transparent"/>
+                <Button  MinHeight="25" MinWidth="150" MaxHeight="100" MaxWidth="200" Padding="5" Command="{Binding Remove_Book_Click}" Margin="10" Name="RemoveClient_Button" Content="Remove Books" FontSize="15" Background="Transparent"/>
+
+            </UniformGrid>
+        </Grid>
     </Grid>
 </UserControl>
